@@ -1,20 +1,18 @@
 # Errors
 
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files...just save them to the `includes` folder and add them to the top of your `index.md`'s frontmatter. Files are included in the order listed.</aside>
+<aside class="notice">TLas respuestas proporcionadas por esta API siempre se reciben en un formato de JSON</aside>
 
-The Kittn API uses the following error codes:
+Los códigos de error más habituales en aonSolutions:
 
-
-Error Code | Meaning
----------- | -------
-400 | Bad Request -- Your request sucks.
-401 | Unauthorized -- Your API key is wrong.
-403 | Forbidden -- The kitten requested is hidden for administrators only.
-404 | Not Found -- The specified kitten could not be found.
-405 | Method Not Allowed -- You tried to access a kitten with an invalid method.
-406 | Not Acceptable -- You requested a format that isn't json.
-410 | Gone -- The kitten requested has been removed from our servers.
-418 | I'm a teapot.
-429 | Too Many Requests -- You're requesting too many kittens! Slow down!
-500 | Internal Server Error -- We had a problem with our server. Try again later.
-503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later.
+Código | Mensaje | Descripción
+------ | ------- | -----------
+400 | Bad Request | Tu petición no es válida, reformula la petición al servidor para obtner una respuesta válida.
+401 | Unauthorized | Tu session_id en aonSolutions no es válida, por favor vuelve a hacer login en aonSolutions.
+403 | Forbidden | No tienes acceso a este servicio.
+404 | Not Found | El servicio solicitado no existe.
+405 | Method Not Allowed | El servicio solicitado no está activo.
+406 | Not Acceptable | La petición realizada no es un JSON.
+410 | Gone | El servicio ha sido eliminado de los servidores de aonSolutions.
+429 | Too Many Requests | Se han realizado demasiadas peticiones a los servicios en un periodo muy corto de tiempo.
+500 | Internal Server Error | Ha habido algún problema en los servidores de aonSolutions. Por favor, inténtelo más tarde.
+503 | Service Unavailable | El servicio no está disponible por razones de mantenimiento. Por favor, inténtelo más tarde.
