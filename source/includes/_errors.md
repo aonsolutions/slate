@@ -1,4 +1,4 @@
-# Errors
+# Errores
 
 <aside class="notice">TLas respuestas proporcionadas por esta API siempre se reciben en un formato de JSON</aside>
 

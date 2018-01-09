@@ -1,7 +1,6 @@
-# Factura
+# Facturas
 
 ## Obtener Todas las Facturas
-
 
 > Ejemplo de llamada al servicio “Obtener Todas las Facturas”:
 

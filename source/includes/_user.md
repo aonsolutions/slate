@@ -1,15 +1,36 @@
-# User
+# Usuarios
 
-## List User
+## Obtener Todos los Usuarios
+
+> Ejemplo de llamada al servicio “Obtener Todas las Facturas”:
+
+```shell
+curl --request GET "https://api.aonSolutions.es/user"
+ -H "session_id:YOURSESSIONID"
+```
+
+> Ejemplo de JSON de respuesta:
+
+```json
+[
+  {
+    "email":"aaaa@aaaa.aa",
+    "alias":"aaaa",
+    "companies":["B13268346","B70656012"],
+    "groups":["fiscal","laboral"]
+  }
+]
+```
 
 List all User.
 
+### HTTP Request
+
 `GET https://api.aonSolutions.es/user`
 
+### Parámetros de Búsqueda
 
 You can use the filter query parameter to fetch User. See the table below for more information.
-
-### Parameters
 
 | Name |  Type  | Description |
 |------|--------|-------------|
@@ -17,15 +38,55 @@ You can use the filter query parameter to fetch User. See the table below for mo
 | company | string | Company |
 | group | string | Group |
 
-## Get a single User
+## Obtener un Usuario Específico
+
+> Ejemplo de llamada al servicio “Obtener Todas las Facturas”:
+
+```shell
+curl --request GET "https://api.aonSolutions.es/user/:email"
+ -H "session_id:YOURSESSIONID"
+```
+
+> Ejemplo de JSON de respuesta:
+
+```json
+{
+  "email":"aaaa@aaaa.aa",
+  "alias":"aaaa",
+  "companies":["B13268346","B70656012"],
+  "groups":["fiscal","laboral"]
+}
+```
+
+### HTTP Request
 
 `GET https://api.aonSolutions.es/user/:email`
 
-## Create / Edit a User
+## Crear / Actualizar un Usuario
+
+> Ejemplo de llamada al servicio “Obtener Todas las Facturas”:
+
+```shell
+curl --request POST "https://api.aonSolutions.es/user"
+ -H "session_id:YOURSESSIONID"
+```
+
+> Ejemplo de JSON de respuesta:
+
+```json
+{
+  "email":"aaaa@aaaa.aa",
+  "alias":"aaaa",
+  "companies":["B13268346","B70656012"],
+  "groups":["fiscal","laboral"]
+}
+```
+
+### HTTP Request
 
 `POST https://api.aonSolutions.es/user`
 
-### Parameters
+### Parámetros
 
 | Name |  Type  | Description |
 |------|--------|-------------|
@@ -35,6 +96,26 @@ You can use the filter query parameter to fetch User. See the table below for mo
 | companies | [string] | Array of companies (CIF) |
 | groups | [string] | Array of groups |
 
-## Delete a User
+## Borrar un Usuario
+
+> Ejemplo de llamada al servicio “Obtener Todas las Facturas”:
+
+```shell
+curl --request DELETE "https://api.aonSolutions.es/user/:email"
+ -H "session_id:YOURSESSIONID"
+```
+
+> Ejemplo de JSON de respuesta:
+
+```json
+{
+  "email":"aaaa@aaaa.aa",
+  "alias":"aaaa",
+  "companies":["B13268346","B70656012"],
+  "groups":["fiscal","laboral"]
+}
+```
+
+### HTTP Request
 
 `DELETE https://api.aonSolutions.es/user/:email`

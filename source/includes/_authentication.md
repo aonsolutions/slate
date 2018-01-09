@@ -1,4 +1,4 @@
-# Authentication
+# Autenticación
 
 > Para autenticarse, debes hacerlo con la siguiente llamada al servicio web:
 
@@ -24,7 +24,7 @@ aonSolutions utiliza un sistema de identificadores de sesión para autorizar a u
 
 `POST https://api.aonSolutions.es/auth`
 
-### Data Parameters
+### Parámetros
 
 | Name |  Type  | Description |
 |------|--------|-------------|
