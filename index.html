@@ -222,35 +222,35 @@
             <a href="#introduccion" class="toc-h1 toc-link" data-title="Introducción">Introducción</a>
           </li>
           <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+            <a href="#autenticacion" class="toc-h1 toc-link" data-title="Autenticación">Autenticación</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#http-request" class="toc-h2 toc-link" data-title="HTTP Request">HTTP Request</a>
                   </li>
                   <li>
-                    <a href="#data-parameters" class="toc-h2 toc-link" data-title="Data Parameters">Data Parameters</a>
+                    <a href="#parametros" class="toc-h2 toc-link" data-title="Parámetros">Parámetros</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#user" class="toc-h1 toc-link" data-title="User">User</a>
+            <a href="#usuarios" class="toc-h1 toc-link" data-title="Usuarios">Usuarios</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#list-user" class="toc-h2 toc-link" data-title="List User">List User</a>
+                    <a href="#obtener-todos-los-usuarios" class="toc-h2 toc-link" data-title="Obtener Todos los Usuarios">Obtener Todos los Usuarios</a>
                   </li>
                   <li>
-                    <a href="#get-a-single-user" class="toc-h2 toc-link" data-title="Get a single User">Get a single User</a>
+                    <a href="#obtener-un-usuario-especifico" class="toc-h2 toc-link" data-title="Obtener un Usuario Específico">Obtener un Usuario Específico</a>
                   </li>
                   <li>
-                    <a href="#create-edit-a-user" class="toc-h2 toc-link" data-title="Create / Edit a User">Create / Edit a User</a>
+                    <a href="#crear-actualizar-un-usuario" class="toc-h2 toc-link" data-title="Crear / Actualizar un Usuario">Crear / Actualizar un Usuario</a>
                   </li>
                   <li>
-                    <a href="#delete-a-user" class="toc-h2 toc-link" data-title="Delete a User">Delete a User</a>
+                    <a href="#borrar-un-usuario" class="toc-h2 toc-link" data-title="Borrar un Usuario">Borrar un Usuario</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#factura" class="toc-h1 toc-link" data-title="Factura">Factura</a>
+            <a href="#facturas" class="toc-h1 toc-link" data-title="Facturas">Facturas</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#obtener-todas-las-facturas" class="toc-h2 toc-link" data-title="Obtener Todas las Facturas">Obtener Todas las Facturas</a>
@@ -267,7 +267,7 @@
               </ul>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+            <a href="#errores" class="toc-h1 toc-link" data-title="Errores">Errores</a>
           </li>
       </div>
         <ul class="toc-footer">
@@ -282,27 +282,27 @@
 <p>¡Bienvenido a la API de aonSolutions!</p>
 
 <p>La API de aonSolutions está estructurada siguiendo los fundamentos de una API RESTful. Todas las respuestas, incluyendo las respuestas de errores, devuelven un JSON. En este documento podrás encontrar los diferentes servicios que ofrecemos para visualizar y gestionar las principales entidades de aonSolutions.</p>
-<h1 id='authentication'>Authentication</h1>
+<h1 id='autenticacion'>Autenticación</h1>
 <blockquote>
 <p>Para autenticarse, debes hacerlo con la siguiente llamada al servicio web:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>
 <span class="c"># El servicio Login es una llamada POST</span>
-curl --request POST <span class="s2">"https://api.aonSolutions.es/auth"</span>
+curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
   --data <span class="s2">"user=youruser@email.xxx"</span>
-  --data <span class="s2">"password=youraonSolutionspassword"</span>
+  --data <span class="s2">"password=yourtEDICenterpassword"</span>
 </code></pre>
 <blockquote>
-<p>La respuesta devolverá la session_id que deberás utilizar en cada petición a los servicios de aonSolutions:</p>
+<p>La respuesta devolverá la session_id que deberás utilizar en cada petición a los servicios de tEDI Center:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"session_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"234QWEREWRewfq23ehjHF456..."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>aonSolutions utiliza un sistema de identificadores de sesión para autorizar a un usuario a realizar llamadas a cualquier servicio web.</p>
+<p>tEDI Center utiliza un sistema de identificadores de sesión para autorizar a un usuario a realizar llamadas a cualquier servicio web.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://api.aonSolutions.es/auth</code></p>
-<h3 id='data-parameters'>Data Parameters</h3>
+<p><code>POST https://api.tedi.center/auth</code></p>
+<h3 id='parametros'>Parámetros</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -313,25 +313,43 @@ curl --request POST <span class="s2">"https://api.aonSolutions.es/auth"</span>
 <tr>
 <td>user</td>
 <td>string</td>
-<td>Cuenta de correo registrada en aonSolutions. Si no dispones de una, por favor regístrate en https://aonSolutions.es</td>
+<td>Cuenta de correo registrada en tEDI Center. Si no dispones de una, por favor regístrate en https://tedi.center</td>
 </tr>
 <tr>
 <td>password</td>
 <td>string</td>
-<td>Contraseña utilizada en el registro de aonSolutions</td>
+<td>Contraseña utilizada en el registro de tEDI Center</td>
 </tr>
 </tbody></table>
 
 <p>Si el usuario no utiliza este identificador, el servicio devolverá el error “Unauthorized” y se deberá volver a identificar para seguir haciendo uso de los servicios.</p>
 
-<aside class="notice">Se necesita el valor de session_id para cualquier otra llamada a la API de aonSolutions.</aside>
-<h1 id='user'>User</h1><h2 id='list-user'>List User</h2>
+<aside class="notice">Se necesita el valor de session_id para cualquier otra llamada a la API de tEDI Center.</aside>
+<h1 id='usuarios'>Usuarios</h1><h2 id='obtener-todos-los-usuarios'>Obtener Todos los Usuarios</h2>
+<blockquote>
+<p>Ejemplo de llamada al servicio “Obtener Todas las Facturas”:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request GET <span class="s2">"https://api.tedi.center/user"</span>
+ -H <span class="s2">"session_id:YOURSESSIONID"</span>
+</code></pre>
+<blockquote>
+<p>Ejemplo de JSON de respuesta:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"aaaa@aaaa.aa"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"alias"</span><span class="p">:</span><span class="s2">"aaaa"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"companies"</span><span class="p">:[</span><span class="s2">"B13268346"</span><span class="p">,</span><span class="s2">"B70656012"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"groups"</span><span class="p">:[</span><span class="s2">"fiscal"</span><span class="p">,</span><span class="s2">"laboral"</span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
 <p>List all User.</p>
-
-<p><code>GET https://api.aonSolutions.es/user</code></p>
-
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://api.tedi.center/user</code></p>
+<h3 id='parametros-de-busqueda'>Parámetros de Búsqueda</h3>
 <p>You can use the filter query parameter to fetch User. See the table below for more information.</p>
-<h3 id='parameters'>Parameters</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -355,11 +373,43 @@ curl --request POST <span class="s2">"https://api.aonSolutions.es/auth"</span>
 <td>Group</td>
 </tr>
 </tbody></table>
-<h2 id='get-a-single-user'>Get a single User</h2>
-<p><code>GET https://api.aonSolutions.es/user/:email</code></p>
-<h2 id='create-edit-a-user'>Create / Edit a User</h2>
-<p><code>POST https://api.aonSolutions.es/user</code></p>
-<h3 id='parameters-2'>Parameters</h3>
+<h2 id='obtener-un-usuario-especifico'>Obtener un Usuario Específico</h2>
+<blockquote>
+<p>Ejemplo de llamada al servicio “Obtener Todas las Facturas”:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request GET <span class="s2">"https://api.tedi.center/user/:email"</span>
+ -H <span class="s2">"session_id:YOURSESSIONID"</span>
+</code></pre>
+<blockquote>
+<p>Ejemplo de JSON de respuesta:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"aaaa@aaaa.aa"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"alias"</span><span class="p">:</span><span class="s2">"aaaa"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"companies"</span><span class="p">:[</span><span class="s2">"B13268346"</span><span class="p">,</span><span class="s2">"B70656012"</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"groups"</span><span class="p">:[</span><span class="s2">"fiscal"</span><span class="p">,</span><span class="s2">"laboral"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://api.tedi.center/user/:email</code></p>
+<h2 id='crear-actualizar-un-usuario'>Crear / Actualizar un Usuario</h2>
+<blockquote>
+<p>Ejemplo de llamada al servicio “Obtener Todas las Facturas”:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request POST <span class="s2">"https://api.tedi.center/user"</span>
+ -H <span class="s2">"session_id:YOURSESSIONID"</span>
+</code></pre>
+<blockquote>
+<p>Ejemplo de JSON de respuesta:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"aaaa@aaaa.aa"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"alias"</span><span class="p">:</span><span class="s2">"aaaa"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"companies"</span><span class="p">:[</span><span class="s2">"B13268346"</span><span class="p">,</span><span class="s2">"B70656012"</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"groups"</span><span class="p">:[</span><span class="s2">"fiscal"</span><span class="p">,</span><span class="s2">"laboral"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST https://api.tedi.center/user</code></p>
+<h3 id='parametros'>Parámetros</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -393,13 +443,29 @@ curl --request POST <span class="s2">"https://api.aonSolutions.es/auth"</span>
 <td>Array of groups</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-user'>Delete a User</h2>
-<p><code>DELETE https://api.aonSolutions.es/user/:email</code></p>
-<h1 id='factura'>Factura</h1><h2 id='obtener-todas-las-facturas'>Obtener Todas las Facturas</h2>
+<h2 id='borrar-un-usuario'>Borrar un Usuario</h2>
 <blockquote>
 <p>Ejemplo de llamada al servicio “Obtener Todas las Facturas”:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="s2">"https://api.aonSolutions.es/invoice/:company"</span>
+<pre class="highlight shell tab-shell"><code>curl --request DELETE <span class="s2">"https://api.tedi.center/user/:email"</span>
+ -H <span class="s2">"session_id:YOURSESSIONID"</span>
+</code></pre>
+<blockquote>
+<p>Ejemplo de JSON de respuesta:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"aaaa@aaaa.aa"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"alias"</span><span class="p">:</span><span class="s2">"aaaa"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"companies"</span><span class="p">:[</span><span class="s2">"B13268346"</span><span class="p">,</span><span class="s2">"B70656012"</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"groups"</span><span class="p">:[</span><span class="s2">"fiscal"</span><span class="p">,</span><span class="s2">"laboral"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-4'>HTTP Request</h3>
+<p><code>DELETE https://api.tedi.center/user/:email</code></p>
+<h1 id='facturas'>Facturas</h1><h2 id='obtener-todas-las-facturas'>Obtener Todas las Facturas</h2>
+<blockquote>
+<p>Ejemplo de llamada al servicio “Obtener Todas las Facturas”:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request GET <span class="s2">"https://api.tedi.center/invoice/:company"</span>
  -H <span class="s2">"session_id:YOURSESSIONID"</span>
 </code></pre>
 <blockquote>
@@ -502,7 +568,7 @@ curl --request POST <span class="s2">"https://api.aonSolutions.es/auth"</span>
 </span></code></pre>
 <p>Este servicio permite obtener todas las facturas de una determinada empresa.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://api.aonSolutions.es/invoice/:company/</code></p>
+<p><code>GET https://api.tedi.center/invoice/:company/</code></p>
 <h3 id='path-paramaters'>Path paramaters</h3>
 <table><thead>
 <tr>
@@ -566,7 +632,7 @@ curl --request POST <span class="s2">"https://api.aonSolutions.es/auth"</span>
 <blockquote>
 <p>Ejemplo de llamada al servicio “Obtener Todas las Facturas”:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="s2">"https://api.aonSolutions.es/invoice/:company"</span>
+<pre class="highlight shell tab-shell"><code>curl --request GET <span class="s2">"https://api.tedi.center/invoice/:company"</span>
  -H <span class="s2">"session_id:YOURSESSIONID"</span>
 </code></pre>
 <blockquote>
@@ -665,7 +731,7 @@ curl --request POST <span class="s2">"https://api.aonSolutions.es/auth"</span>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://api.aonSolutions.es/invoice/:company/:number</code></p>
+<p><code>GET https://api.tedi.center/invoice/:company/:number</code></p>
 <h3 id='path-parameters'>Path parameters</h3>
 <table><thead>
 <tr>
@@ -703,7 +769,7 @@ curl --request POST <span class="s2">"https://api.aonSolutions.es/auth"</span>
 <blockquote>
 <p>Ejemplo de llamada al servicio “Obtener Todas las Facturas”:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="s2">"https://api.aonSolutions.es/invoice/:company"</span>
+<pre class="highlight shell tab-shell"><code>curl --request GET <span class="s2">"https://api.tedi.center/invoice/:company"</span>
  -H <span class="s2">"session_id:YOURSESSIONID"</span>
 </code></pre>
 <blockquote>
@@ -804,7 +870,7 @@ curl --request POST <span class="s2">"https://api.aonSolutions.es/auth"</span>
 </span></code></pre>
 <p>Este servicio permite enviar información para crear/actualizar una factura de una determinada empresa.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>POST https://api.aonSolutions.es/invoice</code></p>
+<p><code>POST https://api.tedi.center/invoice</code></p>
 <h3 id='header-parameters-3'>Header parameters</h3>
 <table><thead>
 <tr>
@@ -823,7 +889,7 @@ curl --request POST <span class="s2">"https://api.aonSolutions.es/auth"</span>
 <blockquote>
 <p>Ejemplo de llamada al servicio “Obtener Todas las Facturas”:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="s2">"https://api.aonSolutions.es/invoice/:company"</span>
+<pre class="highlight shell tab-shell"><code>curl --request GET <span class="s2">"https://api.tedi.center/invoice/:company"</span>
  -H <span class="s2">"session_id:YOURSESSIONID"</span>
 </code></pre>
 <blockquote>
@@ -924,7 +990,7 @@ curl --request POST <span class="s2">"https://api.aonSolutions.es/auth"</span>
 </span></code></pre>
 <p>Este servicio permite borrar una factura de una determinada empresa.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>DELETE https://api.aonSolutions.es/invoice/:company/:number</code></p>
+<p><code>DELETE https://api.tedi.center/invoice/:company/:number</code></p>
 <h3 id='path-paramaters-2'>Path paramaters</h3>
 <table><thead>
 <tr>
@@ -958,10 +1024,10 @@ curl --request POST <span class="s2">"https://api.aonSolutions.es/auth"</span>
 <td>Identificador del sistema devuelto por el servicio de Autenticación.</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">TLas respuestas proporcionadas por esta API siempre se reciben en un formato de JSON</aside>
+<h1 id='errores'>Errores</h1>
+<aside class="notice">Las respuestas proporcionadas por esta API siempre se reciben en un formato de JSON</aside>
 
-<p>Los códigos de error más habituales en aonSolutions:</p>
+<p>Los códigos de error más habituales en tEDI Center:</p>
 
 <table><thead>
 <tr>
@@ -978,7 +1044,7 @@ curl --request POST <span class="s2">"https://api.aonSolutions.es/auth"</span>
 <tr>
 <td>401</td>
 <td>Unauthorized</td>
-<td>Tu session_id en aonSolutions no es válida, por favor vuelve a hacer login en aonSolutions.</td>
+<td>Tu session_id en tEDI Center no es válida, por favor vuelve a hacer login en tEDI Center.</td>
 </tr>
 <tr>
 <td>403</td>
@@ -1003,7 +1069,7 @@ curl --request POST <span class="s2">"https://api.aonSolutions.es/auth"</span>
 <tr>
 <td>410</td>
 <td>Gone</td>
-<td>El servicio ha sido eliminado de los servidores de aonSolutions.</td>
+<td>El servicio ha sido eliminado de los servidores de tEDI Center.</td>
 </tr>
 <tr>
 <td>429</td>
@@ -1013,7 +1079,7 @@ curl --request POST <span class="s2">"https://api.aonSolutions.es/auth"</span>
 <tr>
 <td>500</td>
 <td>Internal Server Error</td>
-<td>Ha habido algún problema en los servidores de aonSolutions. Por favor, inténtelo más tarde.</td>
+<td>Ha habido algún problema en los servidores de tEDI Center. Por favor, inténtelo más tarde.</td>
 </tr>
 <tr>
 <td>503</td>
