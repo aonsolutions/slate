@@ -5,7 +5,7 @@
 > Ejemplo de llamada al servicio “Obtener Todas las Facturas”:
 
 ```shell
-curl --request GET "https://api.aonSolutions.es/invoice/:company"
+curl --request GET "https://api.tedi.center/invoice/:company"
  -H "session_id:YOURSESSIONID"
 ```
 
@@ -112,7 +112,7 @@ Este servicio permite obtener todas las facturas de una determinada empresa.
 
 ### HTTP Request
 
-`GET https://api.aonSolutions.es/invoice/:company/`
+`GET https://api.tedi.center/invoice/:company/`
 
 ### Path paramaters
 
@@ -144,7 +144,7 @@ You can use the filter query parameter to fetch User. See the table below for mo
 > Ejemplo de llamada al servicio “Obtener Todas las Facturas”:
 
 ```shell
-curl --request GET "https://api.aonSolutions.es/invoice/:company"
+curl --request GET "https://api.tedi.center/invoice/:company"
  -H "session_id:YOURSESSIONID"
 ```
 
@@ -247,7 +247,7 @@ curl --request GET "https://api.aonSolutions.es/invoice/:company"
 
 ### HTTP Request
 
-`GET https://api.aonSolutions.es/invoice/:company/:number`
+`GET https://api.tedi.center/invoice/:company/:number`
 
 ### Path parameters
 
@@ -267,7 +267,7 @@ curl --request GET "https://api.aonSolutions.es/invoice/:company"
 > Ejemplo de llamada al servicio “Obtener Todas las Facturas”:
 
 ```shell
-curl --request GET "https://api.aonSolutions.es/invoice/:company"
+curl --request GET "https://api.tedi.center/invoice/:company"
  -H "session_id:YOURSESSIONID"
 ```
 
@@ -372,7 +372,7 @@ Este servicio permite enviar información para crear/actualizar una factura de u
 
 ### HTTP Request
 
-`POST https://api.aonSolutions.es/invoice`
+`POST https://api.tedi.center/invoice`
 
 ### Header parameters
 
@@ -385,7 +385,7 @@ Este servicio permite enviar información para crear/actualizar una factura de u
 > Ejemplo de llamada al servicio “Obtener Todas las Facturas”:
 
 ```shell
-curl --request GET "https://api.aonSolutions.es/invoice/:company"
+curl --request GET "https://api.tedi.center/invoice/:company"
  -H "session_id:YOURSESSIONID"
 ```
 
@@ -490,7 +490,7 @@ Este servicio permite borrar una factura de una determinada empresa.
 
 ### HTTP Request
 
-`DELETE https://api.aonSolutions.es/invoice/:company/:number`
+`DELETE https://api.tedi.center/invoice/:company/:number`
 
 ### Path paramaters
 

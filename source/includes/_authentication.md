@@ -5,12 +5,12 @@
 ```shell
 
 # El servicio Login es una llamada POST
-curl --request POST "https://api.aonSolutions.es/auth"
+curl --request POST "https://api.tedi.center/auth"
   --data "user=youruser@email.xxx"
-  --data "password=youraonSolutionspassword"
+  --data "password=yourtEDICenterpassword"
 ```
 
-> La respuesta devolverá la session_id que deberás utilizar en cada petición a los servicios de aonSolutions:
+> La respuesta devolverá la session_id que deberás utilizar en cada petición a los servicios de tEDI Center:
 
 ```json
 {
@@ -18,19 +18,19 @@ curl --request POST "https://api.aonSolutions.es/auth"
 }
 ```
 
-aonSolutions utiliza un sistema de identificadores de sesión para autorizar a un usuario a realizar llamadas a cualquier servicio web.
+tEDI Center utiliza un sistema de identificadores de sesión para autorizar a un usuario a realizar llamadas a cualquier servicio web.
 
 ### HTTP Request
 
-`POST https://api.aonSolutions.es/auth`
+`POST https://api.tedi.center/auth`
 
 ### Parámetros
 
 | Name |  Type  | Description |
 |------|--------|-------------|
-| user | string | Cuenta de correo registrada en aonSolutions. Si no dispones de una, por favor regístrate en https://aonSolutions.es |
-| password | string | Contraseña utilizada en el registro de aonSolutions |
+| user | string | Cuenta de correo registrada en tEDI Center. Si no dispones de una, por favor regístrate en https://tedi.center |
+| password | string | Contraseña utilizada en el registro de tEDI Center |
 
 Si el usuario no utiliza este identificador, el servicio devolverá el error “Unauthorized” y se deberá volver a identificar para seguir haciendo uso de los servicios.
 
-<aside class="notice">Se necesita el valor de session_id para cualquier otra llamada a la API de aonSolutions.</aside>
+<aside class="notice">Se necesita el valor de session_id para cualquier otra llamada a la API de tEDI Center.</aside>

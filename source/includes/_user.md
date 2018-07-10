@@ -5,7 +5,7 @@
 > Ejemplo de llamada al servicio “Obtener Todas las Facturas”:
 
 ```shell
-curl --request GET "https://api.aonSolutions.es/user"
+curl --request GET "https://api.tedi.center/user"
  -H "session_id:YOURSESSIONID"
 ```
 
@@ -26,7 +26,7 @@ List all User.
 
 ### HTTP Request
 
-`GET https://api.aonSolutions.es/user`
+`GET https://api.tedi.center/user`
 
 ### Parámetros de Búsqueda
 
@@ -43,7 +43,7 @@ You can use the filter query parameter to fetch User. See the table below for mo
 > Ejemplo de llamada al servicio “Obtener Todas las Facturas”:
 
 ```shell
-curl --request GET "https://api.aonSolutions.es/user/:email"
+curl --request GET "https://api.tedi.center/user/:email"
  -H "session_id:YOURSESSIONID"
 ```
 
@@ -60,14 +60,14 @@ curl --request GET "https://api.aonSolutions.es/user/:email"
 
 ### HTTP Request
 
-`GET https://api.aonSolutions.es/user/:email`
+`GET https://api.tedi.center/user/:email`
 
 ## Crear / Actualizar un Usuario
 
 > Ejemplo de llamada al servicio “Obtener Todas las Facturas”:
 
 ```shell
-curl --request POST "https://api.aonSolutions.es/user"
+curl --request POST "https://api.tedi.center/user"
  -H "session_id:YOURSESSIONID"
 ```
 
@@ -84,7 +84,7 @@ curl --request POST "https://api.aonSolutions.es/user"
 
 ### HTTP Request
 
-`POST https://api.aonSolutions.es/user`
+`POST https://api.tedi.center/user`
 
 ### Parámetros
 
@@ -101,7 +101,7 @@ curl --request POST "https://api.aonSolutions.es/user"
 > Ejemplo de llamada al servicio “Obtener Todas las Facturas”:
 
 ```shell
-curl --request DELETE "https://api.aonSolutions.es/user/:email"
+curl --request DELETE "https://api.tedi.center/user/:email"
  -H "session_id:YOURSESSIONID"
 ```
 
@@ -118,4 +118,4 @@ curl --request DELETE "https://api.aonSolutions.es/user/:email"
 
 ### HTTP Request
 
-`DELETE https://api.aonSolutions.es/user/:email`
+`DELETE https://api.tedi.center/user/:email`
