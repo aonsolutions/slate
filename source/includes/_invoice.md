@@ -267,8 +267,9 @@ curl --request GET "https://api.tedi.center/invoice/:company"
 > Ejemplo de llamada al servicio “Obtener Todas las Facturas”:
 
 ```shell
-curl --request GET "https://api.tedi.center/invoice/:company"
+curl --request POST "https://api.tedi.center/invoice"
  -H "session_id:YOURSESSIONID"
+ --data "json"
 ```
 
 > Ejemplo de JSON de respuesta:
@@ -379,6 +380,9 @@ Este servicio permite enviar información para crear/actualizar una factura de u
 | Name |  Type  | Description |
 |------|--------|-------------|
 | session_id | string | Identificador del sistema devuelto por el servicio de Autenticación. |
+| json | json | Factura en formato JSON. |
+
+Si se específica number, la API interpreta que es una actualización de factura, en caso contrario se tratará como una creación de factura.
 
 ## Borrar una Factura
 
