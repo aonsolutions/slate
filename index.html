@@ -769,8 +769,9 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
 <blockquote>
 <p>Ejemplo de llamada al servicio “Obtener Todas las Facturas”:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="s2">"https://api.tedi.center/invoice/:company"</span>
+<pre class="highlight shell tab-shell"><code>curl --request POST <span class="s2">"https://api.tedi.center/invoice"</span>
  -H <span class="s2">"session_id:YOURSESSIONID"</span>
+ --data <span class="s2">"json"</span>
 </code></pre>
 <blockquote>
 <p>Ejemplo de JSON de respuesta:</p>
@@ -884,7 +885,14 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
 <td>string</td>
 <td>Identificador del sistema devuelto por el servicio de Autenticación.</td>
 </tr>
+<tr>
+<td>json</td>
+<td>json</td>
+<td>Factura en formato JSON.</td>
+</tr>
 </tbody></table>
+
+<p>Si se específica number, la API interpreta que es una actualización de factura, en caso contrario se tratará como una creación de factura.</p>
 <h2 id='borrar-una-factura'>Borrar una Factura</h2>
 <blockquote>
 <p>Ejemplo de llamada al servicio “Obtener Todas las Facturas”:</p>
