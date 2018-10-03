@@ -250,6 +250,23 @@
               </ul>
           </li>
           <li>
+            <a href="#empresas" class="toc-h1 toc-link" data-title="Empresas">Empresas</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#obtener-todas-las-empresas" class="toc-h2 toc-link" data-title="Obtener Todas las Empresas">Obtener Todas las Empresas</a>
+                  </li>
+                  <li>
+                    <a href="#obtener-un-usuario-especifico" class="toc-h2 toc-link" data-title="Obtener un Usuario Específico">Obtener un Usuario Específico</a>
+                  </li>
+                  <li>
+                    <a href="#crear-actualizar-un-usuario" class="toc-h2 toc-link" data-title="Crear / Actualizar un Usuario">Crear / Actualizar un Usuario</a>
+                  </li>
+                  <li>
+                    <a href="#borrar-un-empresa" class="toc-h2 toc-link" data-title="Borrar un Empresa">Borrar un Empresa</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#facturas" class="toc-h1 toc-link" data-title="Facturas">Facturas</a>
               <ul class="toc-list-h2">
                   <li>
@@ -289,15 +306,18 @@
 <pre class="highlight shell tab-shell"><code>
 <span class="c"># El servicio Login es una llamada POST</span>
 curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
-  --data <span class="s2">"user=youruser@email.xxx"</span>
-  --data <span class="s2">"password=yourtEDICenterpassword"</span>
-</code></pre>
+  --data
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"youruser@email.xxx"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"password"</span><span class="p">:</span><span class="s2">"yourtEDICenterpassword"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <blockquote>
 <p>La respuesta devolverá la session_id que deberás utilizar en cada petición a los servicios de tEDI Center:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"session_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"234QWEREWRewfq23ehjHF456..."</span><span class="w">
-</span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">  
 </span></code></pre>
 <p>tEDI Center utiliza un sistema de identificadores de sesión para autorizar a un usuario a realizar llamadas a cualquier servicio web.</p>
 <h3 id='http-request'>HTTP Request</h3>
@@ -311,7 +331,7 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
 </tr>
 </thead><tbody>
 <tr>
-<td>user</td>
+<td>email</td>
 <td>string</td>
 <td>Cuenta de correo registrada en tEDI Center. Si no dispones de una, por favor regístrate en https://tedi.center</td>
 </tr>
@@ -338,41 +358,34 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"aaaa@aaaa.aa"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"alias"</span><span class="p">:</span><span class="s2">"aaaa"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"aaaa"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"surname"</span><span class="p">:</span><span class="s2">"bbbb"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"document"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05/06/1995"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"companies"</span><span class="p">:[</span><span class="s2">"B13268346"</span><span class="p">,</span><span class="s2">"B70656012"</span><span class="p">],</span><span class="w">
-    </span><span class="s2">"groups"</span><span class="p">:[</span><span class="s2">"fiscal"</span><span class="p">,</span><span class="s2">"laboral"</span><span class="p">]</span><span class="w">
+
+    </span><span class="s2">"permissions"</span><span class="p">:[{</span><span class="w">
+        </span><span class="s2">"tag"</span><span class="p">:</span><span class="s2">"admin"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Administrador"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"reader"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"writer"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"tag"</span><span class="p">:</span><span class="s2">"user"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gestion de Usuario"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reader"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"writer"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"global"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="p">}],</span><span class="w">
+    </span><span class="s2">"users"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"bbb@bbb.bb"</span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>List all User.</p>
+<p>Obtener todos los usuarios a los que el usuario (token) que hace la petición tenga acceso.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET https://api.tedi.center/user</code></p>
-<h3 id='parametros-de-busqueda'>Parámetros de Búsqueda</h3>
-<p>You can use the filter query parameter to fetch User. See the table below for more information.</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>email</td>
-<td>string</td>
-<td>Email</td>
-</tr>
-<tr>
-<td>company</td>
-<td>string</td>
-<td>Company</td>
-</tr>
-<tr>
-<td>group</td>
-<td>string</td>
-<td>Group</td>
-</tr>
-</tbody></table>
 <h2 id='obtener-un-usuario-especifico'>Obtener un Usuario Específico</h2>
 <blockquote>
 <p>Ejemplo de llamada al servicio “Obtener Todas las Facturas”:</p>
@@ -385,12 +398,38 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"aaaa@aaaa.aa"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"alias"</span><span class="p">:</span><span class="s2">"aaaa"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"aaaa"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"surname"</span><span class="p">:</span><span class="s2">"bbbb"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"document"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05/06/1995"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"actual_company"</span><span class="p">:</span><span class="s2">"B13268346"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"companies"</span><span class="p">:[</span><span class="s2">"B13268346"</span><span class="p">,</span><span class="s2">"B70656012"</span><span class="p">],</span><span class="w">
-  </span><span class="s2">"groups"</span><span class="p">:[</span><span class="s2">"fiscal"</span><span class="p">,</span><span class="s2">"laboral"</span><span class="p">]</span><span class="w">
+  </span><span class="s2">"permissions"</span><span class="p">:[{</span><span class="w">
+      </span><span class="s2">"tag"</span><span class="p">:</span><span class="s2">"admin"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Administrador"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reader"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"writer"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"global"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="s2">"users"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"bbb@bbb.bb"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://api.tedi.center/user/:email</code></p>
+<h3 id='path-paramaters'>Path paramaters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Email del usuario.</td>
+</tr>
+</tbody></table>
 <h2 id='crear-actualizar-un-usuario'>Crear / Actualizar un Usuario</h2>
 <blockquote>
 <p>Ejemplo de llamada al servicio “Obtener Todas las Facturas”:</p>
@@ -403,9 +442,21 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"aaaa@aaaa.aa"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"alias"</span><span class="p">:</span><span class="s2">"aaaa"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"aaaa"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"surname"</span><span class="p">:</span><span class="s2">"bbbb"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"document"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05/06/1995"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"actual_company"</span><span class="p">:</span><span class="s2">"B13268346"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"companies"</span><span class="p">:[</span><span class="s2">"B13268346"</span><span class="p">,</span><span class="s2">"B70656012"</span><span class="p">],</span><span class="w">
-  </span><span class="s2">"groups"</span><span class="p">:[</span><span class="s2">"fiscal"</span><span class="p">,</span><span class="s2">"laboral"</span><span class="p">]</span><span class="w">
+  </span><span class="s2">"permissions"</span><span class="p">:[{</span><span class="w">
+      </span><span class="s2">"tag"</span><span class="p">:</span><span class="s2">"admin"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Administrador"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reader"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"writer"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"global"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="s2">"users"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"bbb@bbb.bb"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-3'>HTTP Request</h3>
 <p><code>POST https://api.tedi.center/user</code></p>
@@ -420,32 +471,99 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
 <tr>
 <td>email</td>
 <td>string</td>
-<td>User email.</td>
+<td>Email del usuario.</td>
 </tr>
 <tr>
-<td>alias</td>
+<td>name</td>
 <td>string</td>
-<td>User alias.</td>
+<td>Nombre del usuario.</td>
+</tr>
+<tr>
+<td>surname</td>
+<td>string</td>
+<td>Apellidos del usuario.</td>
+</tr>
+<tr>
+<td>document</td>
+<td>string</td>
+<td>Documentación del usuario (DNI).</td>
 </tr>
 <tr>
 <td>password</td>
 <td>string</td>
-<td>User password.</td>
+<td>Contraseña del usuario.</td>
 </tr>
 <tr>
 <td>companies</td>
 <td>[string]</td>
-<td>Array of companies (CIF)</td>
+<td>Lista de empresas a las que el usuario tiene acces (CIF).</td>
 </tr>
 <tr>
-<td>groups</td>
+<td>actual_company</td>
+<td>string</td>
+<td>Última empresa a la que el usuario a accedido (CIF).</td>
+</tr>
+<tr>
+<td>users</td>
 <td>[string]</td>
-<td>Array of groups</td>
+<td>Lista de usuarios a los que el usuario tiene acceso (tener permisos de gestión de usuarios).</td>
+</tr>
+<tr>
+<td>permissions</td>
+<td>[string]</td>
+<td>Lista de Permisos</td>
+</tr>
+</tbody></table>
+<h3 id='permisos'>Permisos</h3>
+<p>Los Permisos son los siguienter:
+  Administrador,
+  Gestión de Usuarios,
+  Gestión de Empresas,
+  Gestión de Facturas Emitidas,
+  Gestión de Facturas Recibidas,
+  Gestión de Tickets.</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tag</td>
+<td>string</td>
+<td>Etiqueta para identificar el tipo de permiso. (admin, user, company, invoice, invoice_issued, invoice_received, invoice_ticket)</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>Descripción del permiso (Administrador, Gestion de usuarios, ...).</td>
+</tr>
+<tr>
+<td>status</td>
+<td>boolean</td>
+<td>True sii el permiso está activado.</td>
+</tr>
+<tr>
+<td>reader</td>
+<td>boolean</td>
+<td>True sii tiene permisos de lectura.</td>
+</tr>
+<tr>
+<td>writer</td>
+<td>boolean</td>
+<td>True sii tiene permisos de lectura y escritura.</td>
+</tr>
+<tr>
+<td>global</td>
+<td>boolean</td>
+<td>True sii tiene acceso a todos los datos de la empresa, si es False solo tiene acceso a la información aportada por el usuario.</td>
 </tr>
 </tbody></table>
 <h2 id='borrar-un-usuario'>Borrar un Usuario</h2>
 <blockquote>
-<p>Ejemplo de llamada al servicio “Obtener Todas las Facturas”:</p>
+<p>Ejemplo de llamada al servicio “Obtener Todas los usuarios:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request DELETE <span class="s2">"https://api.tedi.center/user/:email"</span>
  -H <span class="s2">"session_id:YOURSESSIONID"</span>
@@ -454,13 +572,163 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
 <p>Ejemplo de JSON de respuesta:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"aaaa@aaaa.aa"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"alias"</span><span class="p">:</span><span class="s2">"aaaa"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aaaa@aaaa.aa"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aaaa"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"surname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bbbb"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"document"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05/06/1995"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"actual_company"</span><span class="p">:</span><span class="s2">"B13268346"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"companies"</span><span class="p">:[</span><span class="s2">"B13268346"</span><span class="p">,</span><span class="s2">"B70656012"</span><span class="p">],</span><span class="w">
-  </span><span class="s2">"groups"</span><span class="p">:[</span><span class="s2">"fiscal"</span><span class="p">,</span><span class="s2">"laboral"</span><span class="p">]</span><span class="w">
+  </span><span class="s2">"permissions"</span><span class="p">:[{</span><span class="w">
+      </span><span class="s2">"tag"</span><span class="p">:</span><span class="s2">"admin"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Administrador"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reader"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"writer"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"global"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="s2">"users"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"bbb@bbb.bb"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-4'>HTTP Request</h3>
 <p><code>DELETE https://api.tedi.center/user/:email</code></p>
+<h3 id='path-paramaters-2'>Path paramaters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Email del usuario.</td>
+</tr>
+</tbody></table>
+<h1 id='empresas'>Empresas</h1><h2 id='obtener-todas-las-empresas'>Obtener Todas las Empresas</h2>
+<blockquote>
+<p>Ejemplo de llamada al servicio “Obtener Todas las Empresas”:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request GET <span class="s2">"https://api.tedi.center/company"</span>
+ -H <span class="s2">"session_id:YOURSESSIONID"</span>
+</code></pre>
+<blockquote>
+<p>Ejemplo de JSON de respuesta:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"document"</span><span class="p">:</span><span class="s2">"B99999999"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"ANONIMO SL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="s2">"Calle mayor 10"</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Obtener todas las empresas a los que el usuario (token) que hace la petición tenga acceso.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://api.tedi.center/company</code></p>
+<h2 id='obtener-un-usuario-especifico'>Obtener un Usuario Específico</h2>
+<blockquote>
+<p>Ejemplo de llamada al servicio “Obtener Todas las Facturas”:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request GET <span class="s2">"https://api.tedi.center/company/:document"</span>
+ -H <span class="s2">"session_id:YOURSESSIONID"</span>
+</code></pre>
+<blockquote>
+<p>Ejemplo de JSON de respuesta:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"document"</span><span class="p">:</span><span class="s2">"B99999999"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"ANONIMO SL"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="s2">"Calle mayor 10"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://api.tedi.center/company/:document</code></p>
+<h3 id='path-paramaters'>Path paramaters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>document</td>
+<td>string</td>
+<td>CIF de la empresa.</td>
+</tr>
+</tbody></table>
+<h2 id='crear-actualizar-un-usuario'>Crear / Actualizar un Usuario</h2>
+<blockquote>
+<p>Ejemplo de llamada al servicio “Obtener Todas las Facturas”:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request POST <span class="s2">"https://api.tedi.center/company"</span>
+ -H <span class="s2">"session_id:YOURSESSIONID"</span>
+</code></pre>
+<blockquote>
+<p>Ejemplo de JSON de respuesta:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"document"</span><span class="p">:</span><span class="s2">"B99999999"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"ANONIMO SL"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="s2">"Calle mayor 10"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST https://api.tedi.center/company</code></p>
+<h3 id='parametros'>Parámetros</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>document</td>
+<td>string</td>
+<td>CIF de la empresa.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Nombre o Razón Social.</td>
+</tr>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>Dirección postal de la empresa.</td>
+</tr>
+</tbody></table>
+<h2 id='borrar-un-empresa'>Borrar un Empresa</h2>
+<blockquote>
+<p>Ejemplo de llamada al servicio “Obtener Todas las Facturas”:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request DELETE <span class="s2">"https://api.tedi.center/company/:document"</span>
+ -H <span class="s2">"session_id:YOURSESSIONID"</span>
+</code></pre>
+<blockquote>
+<p>Ejemplo de JSON de respuesta:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"document"</span><span class="p">:</span><span class="s2">"B99999999"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"ANONIMO SL"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="s2">"Calle mayor 10"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-4'>HTTP Request</h3>
+<p><code>DELETE https://api.tedi.center/user/:email</code></p>
+<h3 id='path-paramaters-2'>Path paramaters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>document</td>
+<td>string</td>
+<td>CIF de la empresa.</td>
+</tr>
+</tbody></table>
 <h1 id='facturas'>Facturas</h1><h2 id='obtener-todas-las-facturas'>Obtener Todas las Facturas</h2>
 <blockquote>
 <p>Ejemplo de llamada al servicio “Obtener Todas las Facturas”:</p>
@@ -562,13 +830,23 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
         </span><span class="s2">"pdf_url"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="s2">"json_url"</span><span class="p">:</span><span class="s2">""</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"history"</span><span class="p">:[{</span><span class="w">
+      </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"create"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aaaa@aaa.a"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-01"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"edit"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bbbb@bbb.b"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-01"</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Este servicio permite obtener todas las facturas de una determinada empresa.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://api.tedi.center/invoice/:company/</code></p>
+<p><code>GET https://api.tedi.center/invoice/:company?filter={}</code></p>
 <h3 id='path-paramaters'>Path paramaters</h3>
 <table><thead>
 <tr>
@@ -608,24 +886,14 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
 </tr>
 </thead><tbody>
 <tr>
-<td>reference</td>
+<td>type</td>
 <td>string</td>
-<td>invoice reference.</td>
+<td>Tipo de la factura (emitidas, recibidas, ticket)</td>
 </tr>
 <tr>
-<td>sender</td>
+<td>status</td>
 <td>string</td>
-<td>sender document (NIF)</td>
-</tr>
-<tr>
-<td>receiver</td>
-<td>string</td>
-<td>receiver document (NIF)</td>
-</tr>
-<tr>
-<td>date</td>
-<td>date</td>
-<td>from date</td>
+<td>Estado de la factura (pendiente, revision, aceptada)</td>
 </tr>
 </tbody></table>
 <h2 id='obtener-una-factura-especifica'>Obtener una Factura específica</h2>
@@ -642,7 +910,10 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
   </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B70656012"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
   </span><span class="s2">"info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"R-2018/1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"reference"</span><span class="p">:</span><span class="s2">"2017/000012312"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"pendiente || revision || aceptada"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"source"</span><span class="p">:</span><span class="s2">"web || phone || mail"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"sender"</span><span class="p">:{</span><span class="w">
       </span><span class="s2">"document"</span><span class="p">:{</span><span class="w">
         </span><span class="s2">"document"</span><span class="p">:</span><span class="s2">"B13268346"</span><span class="p">,</span><span class="w">
@@ -695,7 +966,7 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
       </span><span class="s2">"deductible_quota"</span><span class="p">:</span><span class="mf">0.00</span><span class="w">
     </span><span class="p">}],</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:{</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"gasto"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"emitidas || recibidas || ticket"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"F1"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Factura"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -728,7 +999,16 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
       </span><span class="s2">"pdf_url"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
       </span><span class="s2">"json_url"</span><span class="p">:</span><span class="s2">""</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"history"</span><span class="p">:[{</span><span class="w">
+    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"create"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aaaa@aaa.a"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-01"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"edit"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bbbb@bbb.b"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-01"</span><span class="w">
+  </span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://api.tedi.center/invoice/:company/:number</code></p>
@@ -780,7 +1060,10 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
   </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B70656012"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
   </span><span class="s2">"info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"R-2018/1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"reference"</span><span class="p">:</span><span class="s2">"2017/000012312"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"pendiente || revision || aceptada"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"source"</span><span class="p">:</span><span class="s2">"web || phone || mail"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"sender"</span><span class="p">:{</span><span class="w">
       </span><span class="s2">"document"</span><span class="p">:{</span><span class="w">
         </span><span class="s2">"document"</span><span class="p">:</span><span class="s2">"B13268346"</span><span class="p">,</span><span class="w">
@@ -833,7 +1116,7 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
       </span><span class="s2">"deductible_quota"</span><span class="p">:</span><span class="mf">0.00</span><span class="w">
     </span><span class="p">}],</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:{</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"gasto"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"emitidas || recibidas || ticket"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"F1"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Factura"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -866,7 +1149,16 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
       </span><span class="s2">"pdf_url"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
       </span><span class="s2">"json_url"</span><span class="p">:</span><span class="s2">""</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"history"</span><span class="p">:[{</span><span class="w">
+    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"create"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aaaa@aaa.a"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-01"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"edit"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bbbb@bbb.b"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-01"</span><span class="w">
+  </span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Este servicio permite enviar información para crear/actualizar una factura de una determinada empresa.</p>
@@ -885,14 +1177,69 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
 <td>string</td>
 <td>Identificador del sistema devuelto por el servicio de Autenticación.</td>
 </tr>
+</tbody></table>
+<h3 id='parametros'>Parámetros</h3>
+<p>Si se específica number, la API interpreta que es una actualización de factura, en caso contrario se tratará como una creación de factura.</p>
+
+<table><thead>
 <tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>company</td>
+<td>string</td>
+<td>CIF de la empresa a la que pertenece la factura.</td>
+</tr>
+<tr>
+<td>number</td>
+<td>number</td>
+<td>Identificador de la factura.</td>
+</tr>
+<tr>
+<td>info</td>
 <td>json</td>
-<td>json</td>
-<td>Factura en formato JSON.</td>
+<td>Información de la factura.</td>
+</tr>
+<tr>
+<td>history</td>
+<td>[json]</td>
+<td>Histórico de las modificaciones de la factura.</td>
 </tr>
 </tbody></table>
+<h3 id='parametros-envio-fichero'>Parámetros (envío fichero)</h3>
+<p>Para enviar el fichero de una factura (en formato imagen o pdf), se deberá de hacer la petición con los siguientes parámetros.</p>
 
-<p>Si se específica number, la API interpreta que es una actualización de factura, en caso contrario se tratará como una creación de factura.</p>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>company</td>
+<td>string</td>
+<td>CIF de la empresa a la que pertenece la factura.</td>
+</tr>
+<tr>
+<td>content</td>
+<td>string</td>
+<td>Fichero en base64.</td>
+</tr>
+<tr>
+<td>contentType</td>
+<td>string</td>
+<td>Formato del fichero (&#39;image/png&#39;).</td>
+</tr>
+<tr>
+<td>contentEncoding</td>
+<td>string</td>
+<td>&#39;base64&#39;</td>
+</tr>
+</tbody></table>
 <h2 id='borrar-una-factura'>Borrar una Factura</h2>
 <blockquote>
 <p>Ejemplo de llamada al servicio “Obtener Todas las Facturas”:</p>
@@ -907,7 +1254,10 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
   </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B70656012"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
   </span><span class="s2">"info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"R-2018/1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"reference"</span><span class="p">:</span><span class="s2">"2017/000012312"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"pendiente || revision || aceptada"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"source"</span><span class="p">:</span><span class="s2">"web || phone || mail"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"sender"</span><span class="p">:{</span><span class="w">
       </span><span class="s2">"document"</span><span class="p">:{</span><span class="w">
         </span><span class="s2">"document"</span><span class="p">:</span><span class="s2">"B13268346"</span><span class="p">,</span><span class="w">
@@ -960,7 +1310,7 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
       </span><span class="s2">"deductible_quota"</span><span class="p">:</span><span class="mf">0.00</span><span class="w">
     </span><span class="p">}],</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:{</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"gasto"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"emitidas || recibidas || ticket"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"F1"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Factura"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -993,7 +1343,16 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
       </span><span class="s2">"pdf_url"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
       </span><span class="s2">"json_url"</span><span class="p">:</span><span class="s2">""</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"history"</span><span class="p">:[{</span><span class="w">
+    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"create"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aaaa@aaa.a"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-01"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"edit"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bbbb@bbb.b"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-01"</span><span class="w">
+  </span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Este servicio permite borrar una factura de una determinada empresa.</p>
