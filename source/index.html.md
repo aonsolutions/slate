@@ -11,6 +11,7 @@ toc_footers:
 includes:
   - authentication
   - user
+  - company
   - invoice
   - errors
 

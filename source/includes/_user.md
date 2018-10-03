@@ -15,28 +15,37 @@ curl --request GET "https://api.tedi.center/user"
 [
   {
     "email":"aaaa@aaaa.aa",
-    "alias":"aaaa",
+    "name":"aaaa",
+    "surname":"bbbb",
+    "document": "XXXXXXXX",
+    "birthdate": "05/06/1995",
     "companies":["B13268346","B70656012"],
-    "groups":["fiscal","laboral"]
+
+    "permissions":[{
+        "tag":"admin",
+        "description": "Administrador",
+        "status": true,
+        "reader": true,
+        "writer": true
+    },
+    {
+      "tag":"user",
+      "description": "Gestion de Usuario",
+      "status": true,
+      "reader": true,
+      "writer": true,
+      "global": false,
+    }],
+    "users": ["bbb@bbb.bb"]
   }
 ]
 ```
 
-List all User.
+Obtener todos los usuarios a los que el usuario (token) que hace la petición tenga acceso.
 
 ### HTTP Request
 
 `GET https://api.tedi.center/user`
-
-### Parámetros de Búsqueda
-
-You can use the filter query parameter to fetch User. See the table below for more information.
-
-| Name |  Type  | Description |
-|------|--------|-------------|
-| email | string | Email |
-| company | string | Company |
-| group | string | Group |
 
 ## Obtener un Usuario Específico
 
@@ -52,15 +61,34 @@ curl --request GET "https://api.tedi.center/user/:email"
 ```json
 {
   "email":"aaaa@aaaa.aa",
-  "alias":"aaaa",
+  "name":"aaaa",
+  "surname":"bbbb",
+  "document": "XXXXXXXX",
+  "birthdate": "05/06/1995",
+  "actual_company":"B13268346",
   "companies":["B13268346","B70656012"],
-  "groups":["fiscal","laboral"]
+  "permissions":[{
+      "tag":"admin",
+      "description": "Administrador",
+      "status": true,
+      "reader": true,
+      "writer": true,
+      "global": true
+  }],
+  "users": ["bbb@bbb.bb"]
 }
 ```
 
 ### HTTP Request
 
 `GET https://api.tedi.center/user/:email`
+
+### Path paramaters
+
+| Name |  Type  | Description |
+|------|--------|-------------|
+| email | string | Email del usuario.|
+
 
 ## Crear / Actualizar un Usuario
 
@@ -76,9 +104,21 @@ curl --request POST "https://api.tedi.center/user"
 ```json
 {
   "email":"aaaa@aaaa.aa",
-  "alias":"aaaa",
+  "name":"aaaa",
+  "surname":"bbbb",
+  "document": "XXXXXXXX",
+  "birthdate": "05/06/1995",
+  "actual_company":"B13268346",
   "companies":["B13268346","B70656012"],
-  "groups":["fiscal","laboral"]
+  "permissions":[{
+      "tag":"admin",
+      "description": "Administrador",
+      "status": true,
+      "reader": true,
+      "writer": true,
+      "global": true
+  }],
+  "users": ["bbb@bbb.bb"]
 }
 ```
 
@@ -90,15 +130,38 @@ curl --request POST "https://api.tedi.center/user"
 
 | Name |  Type  | Description |
 |------|--------|-------------|
-| email | string | User email. |
-| alias | string | User alias. |
-| password | string | User password. |
-| companies | [string] | Array of companies (CIF) |
-| groups | [string] | Array of groups |
+| email | string | Email del usuario. |
+| name | string | Nombre del usuario. |
+| surname | string | Apellidos del usuario. |
+| document | string | Documentación del usuario (DNI). |
+| password | string | Contraseña del usuario. |
+| companies | [string] | Lista de empresas a las que el usuario tiene acces (CIF). |
+| actual_company | string | Última empresa a la que el usuario a accedido (CIF). |
+| users | [string] | Lista de usuarios a los que el usuario tiene acceso (tener permisos de gestión de usuarios). |
+| permissions | [string] | Lista de Permisos |
+
+### Permisos
+
+Los Permisos son los siguienter:
+  Administrador,
+  Gestión de Usuarios,
+  Gestión de Empresas,
+  Gestión de Facturas Emitidas,
+  Gestión de Facturas Recibidas,
+  Gestión de Tickets.
+
+| Name |  Type  | Description |
+|------|--------|-------------|
+| tag | string | Etiqueta para identificar el tipo de permiso. (admin, user, company, invoice, invoice_issued, invoice_received, invoice_ticket) |
+| description | string | Descripción del permiso (Administrador, Gestion de usuarios, ...). |
+| status | boolean | True sii el permiso está activado. |
+| reader | boolean | True sii tiene permisos de lectura. |
+| writer | boolean | True sii tiene permisos de lectura y escritura. |
+| global | boolean | True sii tiene acceso a todos los datos de la empresa, si es False solo tiene acceso a la información aportada por el usuario. |
 
 ## Borrar un Usuario
 
-> Ejemplo de llamada al servicio “Obtener Todas las Facturas”:
+> Ejemplo de llamada al servicio “Obtener Todas los usuarios:
 
 ```shell
 curl --request DELETE "https://api.tedi.center/user/:email"
@@ -109,13 +172,31 @@ curl --request DELETE "https://api.tedi.center/user/:email"
 
 ```json
 {
-  "email":"aaaa@aaaa.aa",
-  "alias":"aaaa",
+  "email": "aaaa@aaaa.aa",
+  "name": "aaaa",
+  "surname": "bbbb",
+  "document": "XXXXXXXX",
+  "birthdate": "05/06/1995",
+  "actual_company":"B13268346",
   "companies":["B13268346","B70656012"],
-  "groups":["fiscal","laboral"]
+  "permissions":[{
+      "tag":"admin",
+      "description": "Administrador",
+      "status": true,
+      "reader": true,
+      "writer": true,
+      "global": true
+  }],
+  "users": ["bbb@bbb.bb"]
 }
 ```
 
 ### HTTP Request
 
 `DELETE https://api.tedi.center/user/:email`
+
+### Path paramaters
+
+| Name |  Type  | Description |
+|------|--------|-------------|
+| email | string | Email del usuario.|

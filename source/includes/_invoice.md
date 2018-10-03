@@ -103,7 +103,17 @@ curl --request GET "https://api.tedi.center/invoice/:company"
         "pdf_url":"",
         "json_url":""
       }
-    }
+    },
+    "history":[{
+      "action": "create",
+      "user": "aaaa@aaa.a",
+      "date": "2017-05-01"
+    }, {
+      "action": "edit",
+      "user": "bbbb@bbb.b",
+      "date": "2017-06-01"
+    }]
+
   }
 ]
 ```
@@ -112,7 +122,7 @@ Este servicio permite obtener todas las facturas de una determinada empresa.
 
 ### HTTP Request
 
-`GET https://api.tedi.center/invoice/:company/`
+`GET https://api.tedi.center/invoice/:company?filter={}`
 
 ### Path paramaters
 
@@ -132,12 +142,8 @@ You can use the filter query parameter to fetch User. See the table below for mo
 
 | Name |  Type  | Description |
 |------|--------|-------------|
-| reference | string | invoice reference. |
-| sender | string | sender document (NIF) |
-| receiver | string | receiver document (NIF) |
-| date | date | from date |
-
-
+| type | string | Tipo de la factura (emitidas, recibidas, ticket)  |
+| status | string | Estado de la factura (pendiente, revision, aceptada) |
 
 ## Obtener una Factura específica
 
@@ -155,7 +161,10 @@ curl --request GET "https://api.tedi.center/invoice/:company"
   "company": "B70656012",
   "number": 42,
   "info": {
+    "code":"R-2018/1",
     "reference":"2017/000012312",
+    "status":"pendiente || revision || aceptada",
+    "source":"web || phone || mail",
     "sender":{
       "document":{
         "document":"B13268346",
@@ -208,7 +217,7 @@ curl --request GET "https://api.tedi.center/invoice/:company"
       "deductible_quota":0.00
     }],
     "type":{
-      "type":"gasto",
+      "type":"emitidas || recibidas || ticket",
       "value":"F1",
       "description":"Factura"
     },
@@ -241,7 +250,16 @@ curl --request GET "https://api.tedi.center/invoice/:company"
       "pdf_url":"",
       "json_url":""
     }
-  }
+  },
+  "history":[{
+    "action": "create",
+    "user": "aaaa@aaa.a",
+    "date": "2017-05-01"
+  }, {
+    "action": "edit",
+    "user": "bbbb@bbb.b",
+    "date": "2017-06-01"
+  }]
 }
 ```
 
@@ -279,7 +297,10 @@ curl --request POST "https://api.tedi.center/invoice"
   "company": "B70656012",
   "number": 42,
   "info": {
+    "code":"R-2018/1",
     "reference":"2017/000012312",
+    "status":"pendiente || revision || aceptada",
+    "source":"web || phone || mail",
     "sender":{
       "document":{
         "document":"B13268346",
@@ -332,7 +353,7 @@ curl --request POST "https://api.tedi.center/invoice"
       "deductible_quota":0.00
     }],
     "type":{
-      "type":"gasto",
+      "type":"emitidas || recibidas || ticket",
       "value":"F1",
       "description":"Factura"
     },
@@ -365,7 +386,16 @@ curl --request POST "https://api.tedi.center/invoice"
       "pdf_url":"",
       "json_url":""
     }
-  }
+  },
+  "history":[{
+    "action": "create",
+    "user": "aaaa@aaa.a",
+    "date": "2017-05-01"
+  }, {
+    "action": "edit",
+    "user": "bbbb@bbb.b",
+    "date": "2017-06-01"
+  }]
 }
 ```
 
@@ -380,9 +410,29 @@ Este servicio permite enviar información para crear/actualizar una factura de u
 | Name |  Type  | Description |
 |------|--------|-------------|
 | session_id | string | Identificador del sistema devuelto por el servicio de Autenticación. |
-| json | json | Factura en formato JSON. |
+
+### Parámetros
 
 Si se específica number, la API interpreta que es una actualización de factura, en caso contrario se tratará como una creación de factura.
+
+| Name |  Type  | Description |
+|------|--------|-------------|
+| company | string | CIF de la empresa a la que pertenece la factura. |
+| number | number | Identificador de la factura. |
+| info | json | Información de la factura. |
+| history | [json] | Histórico de las modificaciones de la factura. |
+
+
+### Parámetros (envío fichero)
+
+Para enviar el fichero de una factura (en formato imagen o pdf), se deberá de hacer la petición con los siguientes parámetros.
+
+| Name |  Type  | Description |
+|------|--------|-------------|
+| company | string | CIF de la empresa a la que pertenece la factura. |
+| content | string | Fichero en base64. |
+| contentType | string | Formato del fichero ('image/png'). |
+| contentEncoding | string | 'base64' |
 
 ## Borrar una Factura
 
@@ -400,7 +450,10 @@ curl --request GET "https://api.tedi.center/invoice/:company"
   "company": "B70656012",
   "number": 42,
   "info": {
+    "code":"R-2018/1",
     "reference":"2017/000012312",
+    "status":"pendiente || revision || aceptada",
+    "source":"web || phone || mail",
     "sender":{
       "document":{
         "document":"B13268346",
@@ -453,7 +506,7 @@ curl --request GET "https://api.tedi.center/invoice/:company"
       "deductible_quota":0.00
     }],
     "type":{
-      "type":"gasto",
+      "type":"emitidas || recibidas || ticket",
       "value":"F1",
       "description":"Factura"
     },
@@ -486,7 +539,16 @@ curl --request GET "https://api.tedi.center/invoice/:company"
       "pdf_url":"",
       "json_url":""
     }
-  }
+  },
+  "history":[{
+    "action": "create",
+    "user": "aaaa@aaa.a",
+    "date": "2017-05-01"
+  }, {
+    "action": "edit",
+    "user": "bbbb@bbb.b",
+    "date": "2017-06-01"
+  }]
 }
 ```
 
