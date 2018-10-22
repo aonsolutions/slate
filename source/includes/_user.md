@@ -41,11 +41,17 @@ curl --request GET "https://api.tedi.center/user"
 ]
 ```
 
-Obtener todos los usuarios a los que el usuario (token) que hace la petición tenga acceso.
+Obtener todos los usuarios a los que el usuario (token) que hace la petición tenga acceso. Devuelve los 25 primeros valores, para obtener los siguientes 25 objetos hay que especificar el atributo last a la hora de hacer a petición.
 
 ### HTTP Request
 
 `GET https://api.tedi.center/user`
+
+### Parámetros
+
+| Name |  Type  | Description |
+|------|--------|-------------|
+| last | string | Email del último usuario del array devuelto en la anterior petición. |
 
 ## Obtener un Usuario Específico
 

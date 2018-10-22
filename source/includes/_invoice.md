@@ -71,6 +71,12 @@ curl --request GET "https://api.tedi.center/invoice/:company"
       }],
       "type":{
         "type":"gasto",
+        "pgc":{
+          "account": "629.0.0",
+          "name": "Otros gastos",
+          "description": "629. Otros gastos",
+          "icon": "receipt"
+        },
         "value":"F1",
         "description":"Factura"
       },
@@ -118,7 +124,7 @@ curl --request GET "https://api.tedi.center/invoice/:company"
 ]
 ```
 
-Este servicio permite obtener todas las facturas de una determinada empresa.
+Este servicio permite obtener todas las facturas de una determinada empresa. Devuelve los 25 primeros valores, para obtener los siguientes 25 objetos hay que especificar el atributo last a la hora de hacer a petición.
 
 ### HTTP Request
 
@@ -144,6 +150,7 @@ You can use the filter query parameter to fetch User. See the table below for mo
 |------|--------|-------------|
 | type | string | Tipo de la factura (emitidas, recibidas, ticket)  |
 | status | string | Estado de la factura (pendiente, revision, aceptada) |
+| last | string | Número de la última factura del array devuelto en la anterior petición. |
 
 ## Obtener una Factura específica
 
@@ -218,6 +225,12 @@ curl --request GET "https://api.tedi.center/invoice/:company"
     }],
     "type":{
       "type":"emitidas || recibidas || ticket",
+      "pgc":{
+        "account": "629.0.0",
+        "name": "Otros gastos",
+        "description": "629. Otros gastos",
+        "icon": "receipt"
+      },
       "value":"F1",
       "description":"Factura"
     },
@@ -354,6 +367,12 @@ curl --request POST "https://api.tedi.center/invoice"
     }],
     "type":{
       "type":"emitidas || recibidas || ticket",
+      "pgc":{
+        "account": "629.0.0",
+        "name": "Otros gastos",
+        "description": "629. Otros gastos",
+        "icon": "receipt"
+      },
       "value":"F1",
       "description":"Factura"
     },
@@ -507,6 +526,12 @@ curl --request GET "https://api.tedi.center/invoice/:company"
     }],
     "type":{
       "type":"emitidas || recibidas || ticket",
+      "pgc":{
+        "account": "629.0.0",
+        "name": "Otros gastos",
+        "description": "629. Otros gastos",
+        "icon": "receipt"
+      },
       "value":"F1",
       "description":"Factura"
     },

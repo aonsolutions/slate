@@ -13,6 +13,7 @@ includes:
   - user
   - company
   - invoice
+  - types
   - errors
 
 search: true
