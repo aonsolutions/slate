@@ -284,6 +284,14 @@
               </ul>
           </li>
           <li>
+            <a href="#tipos-de-factura" class="toc-h1 toc-link" data-title="Tipos de Factura">Tipos de Factura</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#obtener-todos-los-tipos-de-factura" class="toc-h2 toc-link" data-title="Obtener Todos los Tipos de Factura">Obtener Todos los Tipos de Factura</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errores" class="toc-h1 toc-link" data-title="Errores">Errores</a>
           </li>
       </div>
@@ -383,9 +391,23 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>Obtener todos los usuarios a los que el usuario (token) que hace la petición tenga acceso.</p>
+<p>Obtener todos los usuarios a los que el usuario (token) que hace la petición tenga acceso. Devuelve los 25 primeros valores, para obtener los siguientes 25 objetos hay que especificar el atributo last a la hora de hacer a petición.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET https://api.tedi.center/user</code></p>
+<h3 id='parametros'>Parámetros</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>last</td>
+<td>string</td>
+<td>Email del último usuario del array devuelto en la anterior petición.</td>
+</tr>
+</tbody></table>
 <h2 id='obtener-un-usuario-especifico'>Obtener un Usuario Específico</h2>
 <blockquote>
 <p>Ejemplo de llamada al servicio “Obtener Todas las Facturas”:</p>
@@ -460,7 +482,7 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-3'>HTTP Request</h3>
 <p><code>POST https://api.tedi.center/user</code></p>
-<h3 id='parametros'>Parámetros</h3>
+<h3 id='parametros-2'>Parámetros</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -623,9 +645,23 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>Obtener todas las empresas a los que el usuario (token) que hace la petición tenga acceso.</p>
+<p>Obtener todas las empresas a los que el usuario (token) que hace la petición tenga acceso. Devuelve los 25 primeros valores, para obtener los siguientes 25 objetos hay que especificar el atributo last a la hora de hacer a petición.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET https://api.tedi.center/company</code></p>
+<h3 id='parametros'>Parámetros</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>last</td>
+<td>string</td>
+<td>CIF de la última empresa del array devuelto en la anterior petición.</td>
+</tr>
+</tbody></table>
 <h2 id='obtener-un-usuario-especifico'>Obtener un Usuario Específico</h2>
 <blockquote>
 <p>Ejemplo de llamada al servicio “Obtener Todas las Facturas”:</p>
@@ -674,7 +710,7 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-3'>HTTP Request</h3>
 <p><code>POST https://api.tedi.center/company</code></p>
-<h3 id='parametros'>Parámetros</h3>
+<h3 id='parametros-2'>Parámetros</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -798,6 +834,12 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
       </span><span class="p">}],</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:{</span><span class="w">
         </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"gasto"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"pgc"</span><span class="p">:{</span><span class="w">
+          </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"629.0.0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Otros gastos"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"629. Otros gastos"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"receipt"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
         </span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"F1"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Factura"</span><span class="w">
       </span><span class="p">},</span><span class="w">
@@ -844,7 +886,7 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>Este servicio permite obtener todas las facturas de una determinada empresa.</p>
+<p>Este servicio permite obtener todas las facturas de una determinada empresa. Devuelve los 25 primeros valores, para obtener los siguientes 25 objetos hay que especificar el atributo last a la hora de hacer a petición.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET https://api.tedi.center/invoice/:company?filter={}</code></p>
 <h3 id='path-paramaters'>Path paramaters</h3>
@@ -894,6 +936,11 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
 <td>status</td>
 <td>string</td>
 <td>Estado de la factura (pendiente, revision, aceptada)</td>
+</tr>
+<tr>
+<td>last</td>
+<td>string</td>
+<td>Número de la última factura del array devuelto en la anterior petición.</td>
 </tr>
 </tbody></table>
 <h2 id='obtener-una-factura-especifica'>Obtener una Factura específica</h2>
@@ -967,6 +1014,12 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
     </span><span class="p">}],</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:{</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"emitidas || recibidas || ticket"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pgc"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"629.0.0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Otros gastos"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"629. Otros gastos"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"receipt"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
       </span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"F1"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Factura"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -1117,6 +1170,12 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
     </span><span class="p">}],</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:{</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"emitidas || recibidas || ticket"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pgc"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"629.0.0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Otros gastos"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"629. Otros gastos"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"receipt"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
       </span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"F1"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Factura"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -1311,6 +1370,12 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
     </span><span class="p">}],</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:{</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"emitidas || recibidas || ticket"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pgc"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"629.0.0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Otros gastos"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"629. Otros gastos"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"receipt"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
       </span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"F1"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Factura"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -1391,6 +1456,28 @@ curl --request POST <span class="s2">"https://api.tedi.center/auth"</span>
 <td>Identificador del sistema devuelto por el servicio de Autenticación.</td>
 </tr>
 </tbody></table>
+<h1 id='tipos-de-factura'>Tipos de Factura</h1><h2 id='obtener-todos-los-tipos-de-factura'>Obtener Todos los Tipos de Factura</h2>
+<blockquote>
+<p>Ejemplo de llamada al servicio “Obtener Todas las Facturas”:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request GET <span class="s2">"https://api.tedi.center/type"</span>
+ -H <span class="s2">"session_id:YOURSESSIONID"</span>
+</code></pre>
+<blockquote>
+<p>Ejemplo de JSON de respuesta:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"629.0.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Otros gastos"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"629. Otros gastos"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"receipt"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Obtener todos los tipos de factura a los que el usuario (token) que hace la petición tenga acceso.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://api.tedi.center/type</code></p>
 <h1 id='errores'>Errores</h1>
 <aside class="notice">Las respuestas proporcionadas por esta API siempre se reciben en un formato de JSON</aside>
 
